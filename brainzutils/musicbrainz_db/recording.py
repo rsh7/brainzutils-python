@@ -7,7 +7,7 @@ from brainzutils.musicbrainz_db.utils import get_entities_by_gids
 from collections import defaultdict
 from mbdata.models import Recording
 from sqlalchemy.orm import joinedload, subqueryload
-
+import pprint
 
 def get_recording_by_mbid(mbid, include=[]):
     """ Get recording with MusicBrainz ID.
@@ -71,10 +71,13 @@ def _fetch_multiple_recordings(mbids, include=[]):
 
     with mb_session() as db:
         query = db.query(Recording)
-        
+        print(query)
+        pprint.pprint(query, indent=4)
+
         if 'artist' in include or 'artists' in include:
             query = query.options(joinedload("artist_credit", innerjoin=True))
-
+            pprint.pprint(query, indent=4)
+            print(query)
         if 'artists' in include:
             query = query.\
             options(subqueryload("artist_credit.artists")).\

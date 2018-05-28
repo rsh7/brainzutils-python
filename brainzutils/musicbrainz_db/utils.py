@@ -12,6 +12,7 @@ ENTITY_MODELS = {
     'series': models.Series,
     'url': models.URL,
     'recording':models.Recording,
+    'track' : models.Track,
 }
 
 
@@ -23,6 +24,7 @@ REDIRECT_MODELS = {
     'release_group': models.ReleaseGroupGIDRedirect,
     'event': models.EventGIDRedirect,
     'recording': models.RecordingGIDRedirect,
+    'track': models.TrackGIDRedirect,
 }
 
 
